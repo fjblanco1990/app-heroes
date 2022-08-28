@@ -1,0 +1,25 @@
+
+<mat-toolbar color="primary">
+    <span>Menú</span>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>
+            closet
+        </mat-icon>
+    </button> 
+</mat-toolbar>
+<mat-nav-list>
+    <!-- [routerLink]="['/routePath']" routerLinkActive="router-link-active"  -->
+    <a mat-list-item [routerLink]="['./listado']" (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>label</mat-icon>
+        listado de heroes
+    </a>
+    <a mat-list-item [routerLink]="['./agregar']" (click)="sidenav.toggle()">
+        <mat-icon  mat-list-icon>add</mat-icon>
+        Agregar heroes
+    </a>
+    <a mat-list-item routerLink="./buscar" (click)="sidenav.toggle()">
+        <mat-icon>search</mat-icon>
+        Buscar heroe
+    </a>
+</mat-nav-list>

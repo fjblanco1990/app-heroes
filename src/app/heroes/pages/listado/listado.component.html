@@ -1,0 +1,19 @@
+<h1>Listado heroes</h1>
+<mat-divider ></mat-divider>
+<br>
+
+<div fxLayout="row wrap" 
+     fxLayout.xs="column" 
+     fxLayoutAlign="center"
+     fxLayoutGap="20px">
+     <!--fxLayout.xs column sirve decirle a el div que cuando sea pequeño se ponga en una sola columna-->
+     <!--Sirve para dar organizacion a las tarjetas-->
+  <div fxFlex="20" 
+       fxFlex.gt-lg="15" 
+       fxFlex.gt-xs="30"  *ngFor="let heroe of list_heroes"> <!--sirve para dar organizacion a las tarjetas fxFlex="30" es la cantidad de espacio que va aocupar la tarjeta-->
+      <app-card-heroe [heroe]="heroe"></app-card-heroe>
+  </div>
+ 
+</div>
+
+
