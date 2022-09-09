@@ -1,1 +1,65 @@
-<p>agregar works!</p>
+<h1>
+    {{( heroe.id ? 'Editar': 'Nuevo')}} heroe 
+    <small>{{heroe.superhero}}</small>
+<h1>
+
+<div fxLayout="row" fxLayoutGap="40px" fxLayout.xs="column" fxLayout.md="column">
+    <!-- fxLayout="row" sirve para poner las items en columnas -->
+    <!--  fxLayoutGap="40px" sirve para dar una separacion -->
+    <div fxFlex="50" fxLayout="column"  ><!--si se pone fxLayout="column" no es necesario decirle a los campos el tamaño-->
+        <!-- fxFlex="" sirve para decir que tamaño quiero que tenga cada contendor -->
+        <div fxLayout="row" fxLayoutGap="30px">
+            <mat-form-field fxFlex="100">
+                <mat-label>Super heroe</mat-label>
+                <input type="text" matInput required [(ngModel)]="heroe.superhero">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="100">
+                <mat-label>Alter ego</mat-label>
+                <input type="text" matInput required [(ngModel)]="heroe.alter_ego">
+            </mat-form-field>
+        </div>
+        <mat-form-field fxFlex="100">
+            <mat-label>Primera aparicion</mat-label>
+            <input type="text" matInput required [(ngModel)]="heroe.first_appearance">
+        </mat-form-field>
+        <mat-form-field fxFlex="100">
+            <mat-label>Personajes</mat-label>
+            <input type="text" matInput required  [(ngModel)]="heroe.characters">
+        </mat-form-field>
+        <mat-form-field fxFlex="100">
+              <mat-label>Creador</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let publisher of publishers" [value]="publisher.id" required  [(ngModel)]="heroe.publisher">
+                  {{publisher.description}}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex="100">
+            <mat-label>Foto url</mat-label>
+            <input type="text" matInput required [(ngModel)]="heroe.alt_image">
+        </mat-form-field>
+        <br>
+        <!--  fxLayoutGap="30px" sirve para dar una separacion -->
+         <div fxLayout fxLayoutGap="30px">
+            <button mat-raised-button aria-label="Cargar" class="spacer" fxFlex="50" (click)="guardar()">
+                <mat-icon fontIcon="edit"></mat-icon>
+                {{ ( heroe.id? 'Editar': 'Guardar' ) }}
+            </button>
+            <button mat-raised-button aria-label="Cargar" fxFlex="50" (click)="borrar()" color="warn" *ngIf="heroe.id">
+                <mat-icon fontIcon="delete"></mat-icon>
+                Eliminar
+            </button>
+        </div>
+        <br>
+        <div fxLayout>
+            <button mat-raised-button aria-label="Cargar" fxFlex="100" (click)="cancelar()" color="primary" >
+                <mat-icon fontIcon="back"></mat-icon>
+                Cancelar
+            </button>
+        </div>
+    </div>
+    <div fxFlex="50">
+        <img [src]="heroe | imagen" alt="" srcset="">
+    </div>
+</div>

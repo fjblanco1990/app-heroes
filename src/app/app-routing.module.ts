@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/guards/auth.guard';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 
 const routes: Routes = [
@@ -7,16 +8,18 @@ const routes: Routes = [
     //carga con lazyload
     path:'auth',
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule)
+    
   },
   {
     //carga con lazyload
     path:'heroes',
-    loadChildren: () => import('./heroes/heroes.module').then( m => m.HeroesModule)
+    loadChildren: () => import('./heroes/heroes.module').then( m => m.HeroesModule),
+    canLoad: [ AuthGuard ],
+    canActivate: [ AuthGuard ]
   },
   {
     path: '404',
     component: ErrorPageComponent
-
   },
   {
     path: '**',
@@ -26,7 +29,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot( routes )
+  RouterModule.forRoot( routes )
   ],
   exports:[
     RouterModule

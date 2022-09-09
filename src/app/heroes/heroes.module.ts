@@ -15,6 +15,8 @@ import { SharedModule } from '../shared/shared.module';
 import { MenuNavComponent } from './components/menu-nav/menu-nav.component';
 import { CardHeroeComponent } from './components/card-heroe/card-heroe.component';
 import { ImagenPipe } from './pipes/imagen.pipe';
+import { FormsModule } from '@angular/forms';
+import { MatConfirmationComponent } from './components/mat-confirmation/mat-confirmation.component';
 
 
 @NgModule({
@@ -28,14 +30,17 @@ import { ImagenPipe } from './pipes/imagen.pipe';
     MenuToolbarComponent,
     MenuNavComponent,
     CardHeroeComponent,
-    ImagenPipe
+    ImagenPipe,
+    MatConfirmationComponent,
+
   ],
   imports: [
    CommonModule,
     MaterialModule,
     HeroesRoutingModule,
     FlexLayoutModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class HeroesModule { }

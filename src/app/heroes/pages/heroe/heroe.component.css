@@ -1,0 +1,13 @@
+img {
+    /**/
+    width: 50%;
+    border-radius: 5px;
+    
+}
+
+.content-img > img {
+    display: flex;
+    margin: 0px auto;
+    
+}
+

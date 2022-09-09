@@ -8,6 +8,7 @@ import { HeroeReponse } from './../../interfaces/heroes.interfaces';
 })
 export class CardHeroeComponent implements OnInit {
   @Input() heroe!: HeroeReponse;
+  @Input() showSimpleHeroe: boolean = false;
   constructor() { }
 
   ngOnInit(): void {

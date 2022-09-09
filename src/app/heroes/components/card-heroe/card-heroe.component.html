@@ -1,20 +1,46 @@
-<mat-card>
-    <mat-card-header>
-      <!-- <div mat-card-avatar class="example-header-image"></div> -->
-      <mat-card-title> {{ heroe.superhero }}</mat-card-title>
-      <mat-card-subtitle>{{ heroe.alter_ego}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image [src]="heroe | imagen" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-        <h3>{{ heroe.publisher  }}</h3>
-        <p>
-            <strong>Primera aparicion {{heroe.first_appearance}}</strong>
-            <strong>Personajes: {{heroe.characters}}</strong>
-        </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button color="warn">Leer mas</button>
-      <button mat-button color="info">Editar</button>
+<div *ngIf="!showSimpleHeroe">
+  <mat-card [routerLink]="['/heroes', heroe.id]">
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <mat-card-title> {{ heroe.superhero }}</mat-card-title>
+        <mat-card-subtitle>{{ heroe.alter_ego}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="heroe | imagen" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+          <h3>{{ heroe.publisher  }}</h3>
+          <p>
+              <strong>Primera aparicion {{heroe.first_appearance}}</strong>
+              <strong>Personajes: {{heroe.characters}}</strong>
+          </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="warn" [routerLink]="['/heroes', heroe.id]">Leer mas</button>
+        <button mat-button color="info" [routerLink]="['/heroes/editar', heroe.id]">Editar</button>
 
-    </mat-card-actions>
-</mat-card>
+      </mat-card-actions>
+  </mat-card>
+</div>
+<div *ngIf="showSimpleHeroe">
+  <div fxLayout="row"
+      fxLayout.xs="column"
+      fxLayoutGap="30px">
+      <div fxFlex="50">
+        <h1>{{heroe.superhero}} <small> - {{heroe.alter_ego}}</small></h1>
+        <mat-divider></mat-divider>
+        <br>
+        <img [src]="heroe | imagen" alt="" srcset="">
+      </div>
+      <div fxFlex="50">
+        <h1>{{heroe.publisher}}</h1>
+        <mat-divider></mat-divider>
+        <pre>{{heroe | json}}</pre>
+        <mat-list>
+            <mat-list-item>{{heroe.first_appearance}}</mat-list-item>
+            <mat-list-item>{{heroe.characters}}</mat-list-item>
+            <mat-list-item>{{heroe.publisher}}</mat-list-item>
+            <mat-list-item>{{heroe.alter_ego}}</mat-list-item>
+        </mat-list>
+      </div>
+
+  </div>
+</div>
